@@ -1,0 +1,212 @@
+<main class="page-shell">
+  <header class="site-header animate-fade-in delay-100" aria-label="Main navigation">
+    <a class="brand" href="#" aria-label="CozyPaws home">
+      <img
+        src="https://polo-pecan-73837341.figma.site/_assets/v11/0ae29d6d9628bede667f90d57bebe81b8f1ec2bf.svg"
+        width="205"
+        height="52"
+        alt="CozyPaws"
+      />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary">
+      <a class="active" href="#">Home</a>
+      <a href="#shop" (click)="exploreProducts()">Shop</a>
+      <a href="#delivery">Delivery and payment</a>
+      <a href="#brands">Brands</a>
+      <a href="#blog">Blog</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-wrap">
+        @if (isSearchOpen()) {
+          <label class="search-popover animate-scale-in">
+            <span class="sr-only">Search the store</span>
+            <input type="search" placeholder="Search CozyPaws" autofocus />
+          </label>
+        }
+        <button
+          class="icon-button search-button"
+          type="button"
+          aria-label="Search"
+          [attr.aria-expanded]="isSearchOpen()"
+          (click)="toggleSearch()"
+        >
+          <svg lucideSearch size="19" strokeWidth="1.8" aria-hidden="true"></svg>
+        </button>
+      </div>
+
+      <button
+        class="icon-button favorite-button"
+        [class.is-active]="isFavorite()"
+        type="button"
+        aria-label="Toggle Cozy Cat House favorite"
+        [attr.aria-pressed]="isFavorite()"
+        (click)="toggleFavorite()"
+      >
+        <svg lucideStar size="19" strokeWidth="1.8" aria-hidden="true"></svg>
+        <span class="badge">{{ favoriteCount() }}</span>
+      </button>
+
+      <button class="icon-button" type="button" aria-label="View cart" (click)="showCart()">
+        <svg lucideShoppingCart size="19" strokeWidth="1.8" aria-hidden="true"></svg>
+        <span class="badge">{{ cartCount() }}</span>
+      </button>
+
+      <img
+        class="avatar"
+        src="https://polo-pecan-73837341.figma.site/_assets/v11/e62173d41f91350a59628e8a9a55ae078a886fb9.png?w=128"
+        width="40"
+        height="40"
+        alt="Your CozyPaws profile"
+      />
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="mobile-copy">
+      <h1 id="hero-title-mobile" class="font-serif-display animate-text-reveal">
+        Everything Your Pets Love
+      </h1>
+      <p class="animate-fade-up delay-400">Thoughtful essentials for happier pets and calmer homes.</p>
+      <button
+        class="primary-button animate-fade-up delay-500"
+        type="button"
+        (click)="exploreProducts()"
+      >
+        Explore Products
+        <svg lucideArrowRight size="18" strokeWidth="1.8" aria-hidden="true"></svg>
+      </button>
+    </div>
+
+    <div class="hero-title-wrap" aria-hidden="true">
+      <h1 id="hero-title" class="hero-title font-serif-display">
+        <span class="title-line">
+          <span class="animate-word-pop delay-200">Everything</span>
+        </span>
+        <span class="title-line">
+          <span class="animate-word-pop delay-400">Your</span>
+          <span class="animate-word-pop delay-500">Pets</span>
+          <span class="animate-word-pop delay-600">Love</span>
+        </span>
+      </h1>
+    </div>
+
+    <article
+      #productCard
+      id="shop"
+      class="product-card animate-slide-in-left delay-600"
+      tabindex="-1"
+    >
+      <div class="product-visual">
+        <img
+          src="https://polo-pecan-73837341.figma.site/_assets/v11/3e5158dad63d392ade022e81890edc9f54d750bc.png"
+          width="520"
+          height="514"
+          alt="Green Cozy Cat House with a cat resting inside"
+        />
+        <button class="round-cta" type="button" aria-label="Add Cozy Cat House to cart" (click)="addToCart()">
+          <svg lucideArrowUpRight size="19" strokeWidth="1.8" aria-hidden="true"></svg>
+        </button>
+      </div>
+      <div class="product-meta">
+        <span>Cozy Cat House</span>
+        <strong>$49.99</strong>
+      </div>
+    </article>
+
+    <article class="video-card animate-slide-in-right delay-700">
+      <div class="video-visual">
+        <img
+          src="https://polo-pecan-73837341.figma.site/_assets/v11/76be6ec3a93a703b15e9cc01e764a4e3f9d7d2c0.png"
+          width="354"
+          height="574"
+          alt="Pet product review video preview"
+        />
+        <button
+          class="video-play"
+          type="button"
+          aria-label="Play product reviews"
+          (click)="showNotification('Product reviews coming soon')"
+        >
+          <span class="play-circle">
+            <svg lucidePlay size="18" strokeWidth="1.8" aria-hidden="true"></svg>
+          </span>
+          <span>Watch Product Reviews on TikTok and YouTube</span>
+        </button>
+      </div>
+    </article>
+
+    <div class="mobile-stats animate-fade-up delay-800" aria-label="Store highlights">
+      <div class="mobile-stat">
+        <strong>98K+</strong>
+        <div class="avatar-stack" aria-hidden="true">
+          <img
+            src="https://polo-pecan-73837341.figma.site/_assets/v11/e62173d41f91350a59628e8a9a55ae078a886fb9.png?w=128"
+            alt=""
+          />
+          <span><svg lucidePlus size="13" strokeWidth="2" aria-hidden="true"></svg></span>
+        </div>
+      </div>
+      <span class="stat-divider" aria-hidden="true"></span>
+      <div class="mobile-stat rating-stat">
+        <strong>4.6</strong>
+        <svg lucideStar size="18" strokeWidth="1.8" aria-hidden="true"></svg>
+      </div>
+    </div>
+
+    <div class="photo-triptych" aria-label="Happy pets using CozyPaws products">
+      <figure class="photo-panel photo-left animate-photo-reveal delay-800">
+        <img
+          src="https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png"
+          width="760"
+          height="920"
+          alt="Happy pet enjoying a CozyPaws product"
+        />
+        <figcaption class="photo-overlay social-stat animate-scale-in delay-1100">
+          <strong>98K+</strong>
+          <div class="avatar-stack" aria-hidden="true">
+            <img
+              src="https://polo-pecan-73837341.figma.site/_assets/v11/e62173d41f91350a59628e8a9a55ae078a886fb9.png?w=128"
+              alt=""
+            />
+            <span><svg lucidePlus size="15" strokeWidth="2" aria-hidden="true"></svg></span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-panel photo-center animate-photo-reveal delay-600">
+        <img
+          src="https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?h=1024"
+          width="960"
+          height="1140"
+          alt="Dog surrounded by favorite CozyPaws essentials"
+        />
+        <figcaption class="photo-overlay center-cta animate-fade-up delay-1000">
+          <h2>Best Products<br />for Your Pet</h2>
+          <button class="primary-button" type="button" (click)="exploreProducts()">
+            Explore Products
+            <svg lucideArrowRight size="18" strokeWidth="1.8" aria-hidden="true"></svg>
+          </button>
+        </figcaption>
+      </figure>
+
+      <figure class="photo-panel photo-right animate-photo-reveal delay-900">
+        <img
+          src="https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png"
+          width="760"
+          height="920"
+          alt="Content pet relaxing at home"
+        />
+        <figcaption class="photo-overlay rating animate-scale-in delay-1200">
+          <strong>4.6</strong>
+          <svg lucideStar size="24" strokeWidth="1.6" aria-hidden="true"></svg>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  @if (notification()) {
+    <div class="toast animate-fade-up" role="status" aria-live="polite">{{ notification() }}</div>
+  }
+</main>
