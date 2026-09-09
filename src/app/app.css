@@ -359,8 +359,26 @@
   pointer-events: none;
 }
 
+@media (min-width: 1200px) {
+  .photo-triptych::before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: min(27vh, 255px);
+    background: linear-gradient(
+      to right,
+      #a3e8b1 0 30.63%,
+      #004d13 30.63% 69.37%,
+      #a3e8b1 69.37% 100%
+    );
+    content: '';
+  }
+}
+
 .photo-panel {
   position: relative;
+  z-index: 1;
   min-width: 0;
   margin: 0;
   overflow: hidden;
@@ -381,7 +399,7 @@
 
 .photo-left > img,
 .photo-right > img {
-  max-height: min(70vh, 55vw);
+  max-height: min(70vh, 55vw, 520px);
 }
 
 .photo-center {
@@ -389,7 +407,7 @@
 }
 
 .photo-center > img {
-  max-height: min(85vh, 70vw);
+  max-height: min(85vh, 70vw, 600px);
 }
 
 .photo-overlay {
